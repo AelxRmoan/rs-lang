@@ -1,11 +1,11 @@
 import React from 'react';
-import { Hello } from '../Hello';
+import { SignUpForm } from '../SingUpForm';
 
 export const App: React.FC = () => {
   return (
     <>
       <div>App</div>
-      <Hello></Hello>
+      <SignUpForm />
     </>
   );
 };
