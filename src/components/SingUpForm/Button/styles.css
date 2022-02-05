@@ -1,0 +1,17 @@
+.button {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background: #ef9a9a;
+  font-weight: bold;
+}
+
+.buttonWrapper {
+  display: flex;
+}
+
+.button:hover {
+  background: #ffcccb;
+  color: black;
+}
