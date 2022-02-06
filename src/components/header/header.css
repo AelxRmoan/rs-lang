@@ -1,0 +1,16 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__left-flex {
+
+}
+
+.btn {
+  appearance: none;
+  background: transparent;
+  border: none;
+  outline: none; 
+}
