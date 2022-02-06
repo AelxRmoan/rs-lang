@@ -13,7 +13,7 @@ enum TabsEnum {
 export const SignUpForm = () => {
   const [currentTab, setCurrentTab] = useState(TabsEnum.LogIn);
 
-  const handleTabs = (e: React.SyntheticEvent, val: number) => {
+  const handleTabs = (e: React.SyntheticEvent, val: TabsEnum) => {
     setCurrentTab(val);
   };
 
