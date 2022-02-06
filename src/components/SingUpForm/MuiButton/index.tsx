@@ -8,9 +8,9 @@ interface Props {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const ButtonF: React.FC<Props> = ({ children, onClick }) => {
+export const MuiButton: React.FC<Props> = ({ children, onClick }) => {
   return (
-    <Button variant="contained" className={css.button}>
+    <Button variant="contained" onClick={onClick} className={css.button}>
       {children}
     </Button>
   );
