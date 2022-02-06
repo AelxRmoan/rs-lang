@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import css from './styles.css';
-import { Button as MuiButton } from './MuiButton';
+import { Button } from './Button';
 import { Tabs, Tab } from '@mui/material';
-import { TabPanel } from './TabPanel';
 import { LogIn } from './LogIn';
 import { SignUp } from './SignUp';
 
@@ -27,7 +26,7 @@ export const SignUpForm = () => {
         </Tabs>
         {currentTab === TabsEnum.SignUp && <SignUp />}
         {currentTab === TabsEnum.LogIn && <LogIn />}
-        <MuiButton onClick={() => {}}>Get started</MuiButton>
+        <Button onClick={() => {}}>Get started</Button>
       </div>
     </div>
   );
