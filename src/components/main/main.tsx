@@ -1,10 +1,11 @@
-import css from './landing-page.css'
-import { Button } from '../Button/button';
+import { LandingPage } from '../LandingPage/landingPage';
+import css from './main.css';
 
-export const LandingPage = () => {
+export const Main = () => {
   return (
     <main className={css.main}>
-
+      <img src={require('../../assets/img/RegAdvCards/goose.jpg')} alt="" />
+      <LandingPage/>
     </main>
   )
 };

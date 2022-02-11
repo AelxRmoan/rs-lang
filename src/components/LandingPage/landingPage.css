@@ -1,0 +1,15 @@
+.h1 {
+    display: none;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+}
+
+.regAdv__cardsUl {
+    display: flex;
+    flex-wrap: wrap;
+}

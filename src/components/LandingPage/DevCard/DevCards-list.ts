@@ -1,22 +1,24 @@
-const regAdvList = [
+import img1 from './RegAdvCards-img/goose.jpg';
+
+export const regAdvList = [
     {
-        img: '../../assets/img/RegAdvCards/Goose.jpg',
+        img: img1,
         title: '1adv',
         content: 'lllllllllllllllllllllllllllllllllllllllllllllllllllllllllll'
     },
     {
-        img: '../../assets/img/RegAdvCards/Goose.jpg',
-        title: '1adv',
+        img: img1,
+        title: '2adv',
         content: 'lllllllllllllllllllllllllllllllllllllllllllllllllllllllllll'
     },
     {
-        img: '../../assets/img/RegAdvCards/Goose.jpg',
-        title: '1adv',
+        img: img1,
+        title: '3adv',
         content: 'lllllllllllllllllllllllllllllllllllllllllllllllllllllllllll'
     },
     {
-        img: '../../assets/img/RegAdvCards/Goose.jpg',
-        title: '1adv',
+        img: img1,
+        title: '4adv',
         content: 'lllllllllllllllllllllllllllllllllllllllllllllllllllllllllll'
     },
 ]

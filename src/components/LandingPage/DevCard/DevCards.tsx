@@ -1,4 +1,4 @@
-import css from './landing-page.css';
+import css from './regAdvCard.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,12 +8,12 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 interface RegAdvCard {
   selector: string,
   index: string,
-  imgSrc?: string,
+  imgSrc: string,
   title?: string,
   content?: string
 }
 
-export const RegAdvCard = ({children, selector, index, imgSrc, title}: RegAdvCard): JSX.Element => {
+export const RegAdvCard = ({selector, index, imgSrc, title, content}: RegAdvCard): JSX.Element => {
   return (
     <li className={`${css.card__Container} ${selector}`} id={`${selector}${index}`}>
       <Card sx={{ maxWidth: 345 }}>
@@ -42,32 +42,3 @@ export const RegAdvCard = ({children, selector, index, imgSrc, title}: RegAdvCar
     </li>
   )
 };
-
-export default function MultiActionAreaCard() {
-  return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
-    </Card>
-  );
-}
