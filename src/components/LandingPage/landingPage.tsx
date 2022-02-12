@@ -5,7 +5,7 @@ import { RegAdvCard } from './RegAdvCard/regAdvCard';
 import { regAdvList } from './RegAdvCard/regAdvCards-list';
 
 const genRegAdvCards = (selector: string): Array<JSX.Element> => {
-  let advCards = [];
+  const advCards = [];
   for (let i = 0; i < regAdvList.length; i++) {
     advCards.push(          
       <RegAdvCard 
@@ -21,7 +21,7 @@ const genRegAdvCards = (selector: string): Array<JSX.Element> => {
 
 const genDevCards = (selector: string): Array<JSX.Element> => {
   const imgPos: Array<'start'|'end'> = ['start', 'end'];
-  let devCards = [];
+  const devCards = [];
   for (let i = 0; i < devList.length; i++) {
     devCards.push(          
       <DevCard 
