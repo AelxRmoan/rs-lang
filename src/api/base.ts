@@ -1,7 +1,7 @@
 const SERVER_URL = 'https://aelx-rmoan-unexpert-rs-lang.herokuapp.com';
 
 export const baseFetch = async (url: string, options: RequestInit = {}) => {
-  let response = await fetch(SERVER_URL + url, options);
+  const response = await fetch(SERVER_URL + url, options);
   if (response.ok) {
     return await response.json();
   }

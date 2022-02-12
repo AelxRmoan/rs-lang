@@ -11,8 +11,8 @@ interface InputProps<T> extends InputHTMLAttributes<HTMLInputElement> {
   helperText?: string;
   value?: string;
   control: Control<T>;
-  rules?: {};
-  customErrors?: {};
+  rules?: Record<string, string | RegExp>;
+  customErrors?: Record<string, string>;
 }
 
 const defultErrors = { required: 'required!' };
