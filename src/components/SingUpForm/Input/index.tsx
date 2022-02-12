@@ -11,7 +11,10 @@ interface InputProps<T> extends InputHTMLAttributes<HTMLInputElement> {
   helperText?: string;
   value?: string;
   control: Control<T>;
-  rules?: Record<string, string | RegExp>;
+  rules?: Record<
+    string,
+    string | RegExp | number | ((value: string) => boolean)
+  >;
   customErrors?: Record<string, string>;
 }
 
