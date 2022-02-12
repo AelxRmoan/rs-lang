@@ -1,11 +1,15 @@
-interface Button {
+import { Button as MuiButton } from '@mui/material';
+import React from 'react';
+
+interface Props {
   selector: string,
-  name: string,
-  content: string,
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const Button = ({selector, name, content}:Button): JSX.Element => {
+export const Button: React.FC<Props> = ({children, selector, onClick}) => {
   return (
-    <button className={`${selector}`} id={name}>{content}</button>
-  )
+    <MuiButton variant="contained" className={`${selector}`} onClick={onClick}>
+      {children}
+    </MuiButton>
+  );
 };

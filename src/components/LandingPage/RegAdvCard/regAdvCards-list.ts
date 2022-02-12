@@ -1,4 +1,4 @@
-import img1 from './regAdvCards-img/goose.jpg';
+import img1 from './regAdvCardsImg/goose.jpg';
 
 export const regAdvList = [
     {
