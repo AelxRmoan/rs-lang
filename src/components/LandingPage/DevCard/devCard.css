@@ -1,0 +1,93 @@
+.card__Container {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  padding: 5%;
+  border-radius: 2vh;
+  box-shadow: 1px 3px 4px rgb(0 0 0 / 10%);
+}
+
+/* .card__Container:hover {
+  box-shadow: inset 0px 2px 1px -1px rgb(0 0 0 / 20%), inset 0px 1px 1px 0px rgb(0 0 0 / 14%), inset 0px 1px 3px 0px #0000001f !important;
+  background: rgba(0, 0, 0, 0.04);
+} */
+
+.img {
+  width: calc(648vh / (var(--base-width) / 100));
+  height: calc(200vh / (var(--base-width) / 100));
+  border-radius: 50%;
+}
+
+.rightFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.nameFlex {
+  font-size: calc(34vh / (var(--base-width) / 100));
+  display: flex;
+  align-items: baseline;
+}
+
+.svg {
+  padding: 0 calc(10vh / (var(--base-width) / 100));
+  height: calc(28vh / (var(--base-width) / 100));
+  fill: var(--btn-inactive-color)
+}
+
+.svg:hover {
+  fill: var(--bg-color);
+}
+
+.span {
+  width: max-content;
+  background: var(--bg-color);
+  border-radius: 10px;
+  padding: 0 1vh;
+}
+
+
+/* .card {
+  position: relative;
+  display: flex !important;
+  width: 100%;
+  height: 100%;
+}
+
+.card__actionArea {
+  width: 33% !important;
+  display: flex !important;
+  justify-content: start !important;
+}
+
+.card__actionArea:hover {
+  background: white;
+  opacity: 1;
+  box-shadow: 0 0;
+}
+
+.card__contentCon {
+  padding: 5% !important;
+}
+
+.card__h5 {
+  width: 100%;
+  font-size: calc(24vh / (var(--base-width) / 100)) !important;
+}
+
+.card__content {
+  width: 100%;
+  font-size: calc(18vh / (var(--base-width) / 100)) !important;
+  line-break: auto;
+}
+
+.card__linkCon {
+  padding: 5% !important;
+}
+
+.card__link {
+  position: absolute !important;
+  bottom: 0;
+  font-size: calc(24vh / (var(--base-width) / 100)) !important;
+} */

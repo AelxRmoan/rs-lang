@@ -2,14 +2,35 @@
     display: none;
 }
 
+.h2 {
+    font-size: calc(50vh / (var(--base-width) / 100));
+}
+
 .section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1vh;
+    gap: calc(80vh / (var(--base-width) / 100));
 }
 
-.regAdv__cardsUl {
+.iframe {
+    width: calc(800vh / (var(--base-width) / 100));
+    height: calc(450vh / (var(--base-width) / 100));
+    border-radius: calc(15vh / (var(--base-width) / 100));
+}
+
+.regAdvCards__Ul {
     display: flex;
     flex-wrap: wrap;
+    gap: calc(40vh / (var(--base-width) / 100));
+}
+
+.regAdvCard {
+    width: calc(300vh / (var(--base-width) / 100));
+    height: calc(500vh / (var(--base-width) / 100));
+}
+
+.DevCard {
+    width: calc(800vh / (var(--base-width) / 100));
+    height: fit-content;
 }

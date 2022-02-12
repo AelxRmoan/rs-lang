@@ -23,6 +23,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(jpg|png|gif|woff|eot|ttf|svg)/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 50000
+          }
+        }
+      },
+
+      {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [

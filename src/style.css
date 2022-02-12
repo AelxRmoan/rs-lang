@@ -134,6 +134,8 @@ table {
 /* Reset end */
 
 :root {
+  --base-width: 1080;
+
   --bg-color: #ffcccb;
   --btn-inactive-color: #ef9a9a;
   --text-dark: rgba(0, 0, 0, 0.6);

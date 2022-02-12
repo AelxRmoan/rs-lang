@@ -7,36 +7,31 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 interface RegAdvCard {
   selector: string,
-  index: string,
   imgSrc: string,
   title?: string,
   content?: string
 }
 
-export const RegAdvCard = ({selector, index, imgSrc, title, content}: RegAdvCard): JSX.Element => {
+export const RegAdvCard = ({selector, imgSrc, title, content}: RegAdvCard): JSX.Element => {
   return (
-    <li className={`${css.card__Container} ${selector}`} id={`${selector}${index}`}>
-      <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+    <li className={`${css.card__Container} ${selector}`} id={title}>
+      <Card className={`${css.card}`}>
+      <CardActionArea className={`${css.card__actionArea}`}>
         <CardMedia
           component="img"
-          height="140"
           image={imgSrc}
           alt="advCard"
         />
-        <CardContent>
-          <Typography className={`${css.card__h5} ${selector}`} gutterBottom variant="h5" component="div">
+        <CardContent className={`${css.card__contentCon}`}>
+          <Typography className={`${css.card__h5}`} gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography className={`${css.card__content} ${selector}`} variant="body2" color="text.secondary">
+          <Typography className={`${css.card__content}`} variant="body2" color="text.secondary">
             {content}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary" >
-          GIT
-        </Button>
+      <CardActions className={`${css.card__linkCon}`}>
       </CardActions>
     </Card>
     </li>

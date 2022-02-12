@@ -1,22 +1,44 @@
+import { DevCard } from './DevCard/devCard';
+import { devList } from './DevCard/devCards-list';
 import css from './landingPage.css'
 import { RegAdvCard } from './RegAdvCard/regAdvCard';
 import { regAdvList } from './RegAdvCard/regAdvCards-list';
 
-
-export const LandingPage = () => {
-  let cards = [];
+const genRegAdvCards = (selector: string): Array<JSX.Element> => {
+  let advCards = [];
   for (let i = 0; i < regAdvList.length; i++) {
-    cards.push(          
+    advCards.push(          
       <RegAdvCard 
-      selector={css.regAdvCard}
-      index={`${i + 1}`} 
+      selector={selector}
       imgSrc={regAdvList[i].img}
       title={regAdvList[i].title}
       content={regAdvList[i].content}
       />
     ) 
   }
+  return advCards
+}
 
+const genDevCards = (selector: string): Array<JSX.Element> => {
+  const imgPos: Array<'start'|'end'> = ['start', 'end'];
+  let devCards = [];
+  for (let i = 0; i < devList.length; i++) {
+    devCards.push(          
+      <DevCard 
+      selector={selector}
+      avaSrc={devList[i].ava}
+      devName={devList[i].devName}
+      position={devList[i].position}
+      positionInfo={devList[i].positionInfo}
+      itsContribution={devList[i].itsContribution}
+      imgPos={imgPos[i % 2]}
+      />
+    ) 
+  }
+  return devCards
+}
+
+export const LandingPage = () => {
   return (
     <>
       <h1 className={css.h1}>Rs-lang AelxRmoan Unexpert</h1>
@@ -26,8 +48,14 @@ export const LandingPage = () => {
       </section>
       <section className={css.section}>
         <h2 className={css.h2}>Присоединяйтесь к нам</h2>
-        <ul className={css.regAdv__cardsUl}>
-          {cards}
+        <ul className={css.regAdvCards__Ul}>
+          {genRegAdvCards(css.regAdvCard)}
+        </ul>
+      </section>
+      <section className={css.section}>
+        <h2 className={css.h2}>Разрабатывали</h2>
+        <ul className={css.devCards__Ul}>
+          {genDevCards(css.DevCard)}
         </ul>
       </section>
     </>
