@@ -6,8 +6,7 @@ import { Header } from '../header/header';
 export const App: React.FC = () => {
   return (
     <StyledEngineProvider injectFirst>
-    <Header />
-      <div>App</div>
+      <Header />        
       <SignUpForm />
     </StyledEngineProvider>
   );

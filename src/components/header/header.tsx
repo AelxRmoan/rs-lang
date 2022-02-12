@@ -1,5 +1,5 @@
 import css from './header.css'
-// import { Button } from '../Button/button';
+import { Button } from '../Button/button';
 import { useState } from 'react';
 import { Tab, Tabs } from '@mui/material';
 
@@ -27,7 +27,7 @@ export const Header = () => {
           <Tab className={css.tab} label="Games" />
         </Tabs>
       </div>
-      {/* <Button selector={css.btn} onClick={() => {}}>Log in</Button> */}
+      <Button selector={css.btn} onClick={() => {}}>Log in</Button>
     </header>
   )
 };
