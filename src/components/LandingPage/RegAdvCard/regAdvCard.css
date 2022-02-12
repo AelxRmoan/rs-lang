@@ -22,12 +22,13 @@
 
 .card__h5 {
   width: 100%;
-  font-size: calc(24vh / (var(--base-width) / 100)) !important;
+  font-size: var(--h3-size) !important;
+  color: var(--text-dark) !important;
 }
 
 .card__content {
   width: 100%;
-  font-size: calc(18vh / (var(--base-width) / 100)) !important;
+  font-size: var(--p1-size) !important;
   line-break: auto;
 }
 

@@ -3,10 +3,12 @@
 }
 
 .h2 {
-    font-size: calc(50vh / (var(--base-width) / 100));
+    font-size: var(--h2-size);
+    color: var(--text-dark);
 }
 
 .section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,8 +16,8 @@
 }
 
 .iframe {
-    width: calc(800vh / (var(--base-width) / 100));
-    height: calc(450vh / (var(--base-width) / 100));
+    width: calc(950vh / (var(--base-width) / 100));
+    height: calc(535vh / (var(--base-width) / 100));
     border-radius: calc(15vh / (var(--base-width) / 100));
 }
 
@@ -30,7 +32,15 @@
     height: calc(500vh / (var(--base-width) / 100));
 }
 
-.DevCard {
+.devCards__Ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(40vh / (var(--base-width) / 100));
+}
+
+.devCard {
     width: calc(800vh / (var(--base-width) / 100));
     height: fit-content;
 }

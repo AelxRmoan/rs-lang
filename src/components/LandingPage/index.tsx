@@ -1,7 +1,7 @@
-import { DevCard } from './DevCard/devCard';
+import { DevCard } from './DevCard';
 import { devList } from './DevCard/devCards-list';
 import css from './landingPage.css'
-import { RegAdvCard } from './RegAdvCard/regAdvCard';
+import { RegAdvCard } from './RegAdvCard';
 import { regAdvList } from './RegAdvCard/regAdvCards-list';
 
 const genRegAdvCards = (selector: string): Array<JSX.Element> => {
@@ -55,7 +55,7 @@ export const LandingPage = () => {
       <section className={css.section}>
         <h2 className={css.h2}>Разрабатывали</h2>
         <ul className={css.devCards__Ul}>
-          {genDevCards(css.DevCard)}
+          {genDevCards(css.devCard)}
         </ul>
       </section>
     </>

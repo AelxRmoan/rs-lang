@@ -1,14 +1,17 @@
+import css from './app.css'
 import { StyledEngineProvider } from '@mui/material';
 import React from 'react';
-import { Main } from '../main/main';
+import { Header } from '../Header';
+import { LandingPage } from '../LandingPage';
 import { SignUpForm } from '../SingUpForm';
-import { Header } from '../header/header';
 
 export const App: React.FC = () => {
   return (
     <StyledEngineProvider injectFirst>
       <Header />
-      <Main />
+      <main className={css.main}>
+        <LandingPage/>
+      </main>
       <SignUpForm />
     </StyledEngineProvider>
   )
