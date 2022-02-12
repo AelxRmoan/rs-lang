@@ -1,5 +1,5 @@
 import css from './header.css'
-import { Button } from '../Button/button';
+// import { Button } from '../Button/button';
 import { useState } from 'react';
 import { Tab, Tabs } from '@mui/material';
 
@@ -19,15 +19,15 @@ export const Header = () => {
 
   return (
     <header className={css.header} id="header">
-    <div className={css.header__flex} id="header__flex">
-      <Tabs className={css.menu} value={currentTab} onChange={handleTabs}>
+      <div className={css.header__flex} id="header__flex">
+        <Tabs className={css.menu} value={currentTab} onChange={handleTabs}>
           <Tab className={css.tab} label="Welcome" />
           <Tab className={css.tab} label="Word List" />
           <Tab className={css.tab} label="Statistics" />
           <Tab className={css.tab} label="Games" />
         </Tabs>
-    </div>
-      <Button selector={css.btn} onClick={() => {}}>Log in</Button>
-  </header>
+      </div>
+      {/* <Button selector={css.btn} onClick={() => {}}>Log in</Button> */}
+    </header>
   )
 };
