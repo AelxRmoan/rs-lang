@@ -3,7 +3,7 @@ import React from 'react';
 
 interface Props {
   selector: string,
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Button: React.FC<Props> = ({children, selector, onClick}) => {

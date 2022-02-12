@@ -27,7 +27,7 @@ export const Header = () => {
           <Tab className={css.tab} label="Games" />
         </Tabs>
       </div>
-      <Button selector={css.btn} onClick={() => {}}>Log in</Button>
+      <Button selector={css.btn}>Log in</Button>
     </header>
   )
 };
