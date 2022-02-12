@@ -5,7 +5,10 @@ import { useForm } from 'react-hook-form';
 import { createUser } from '../../../api/users';
 
 export const SignUp = () => {
-  const { control, handleSubmit, getValues } = useForm({ mode: 'onBlur' });
+  const { control, handleSubmit, getValues } = useForm({
+    mode: 'onBlur',
+    // defaultValues: { password: '', passwordR: '', name: '', login: '' },
+  });
 
   const onSubmit = (data: any) => {
     createUser(data);
@@ -17,48 +20,48 @@ export const SignUp = () => {
       <Input
         id={'name'}
         type={'text'}
-        placeholder={'имя *'}
+        placeholder={'name *'}
         control={control}
-        customErrors={{ required: 'Введите имя' }}
+        customErrors={{ required: 'Required name' }}
       />
       <Input
         id={'email'}
         type={'email'}
-        placeholder={'логин *'}
+        placeholder={'login *'}
         control={control}
         rules={{
           pattern:
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         }}
         customErrors={{
-          pattern: 'Неправильная почта',
-          required: 'Введите почту',
+          pattern: 'Incorrect email',
+          required: 'Required email',
         }}
       />
       <Input
         id={'password'}
         type={'password'}
-        placeholder={'пароль *'}
+        placeholder={'password *'}
         control={control}
         rules={{ maxLength: 20, minLength: 4 }}
         customErrors={{
-          required: 'Введите пароль',
-          maxLength: 'Максимальная длина пароля 20 символов',
-          minLength: 'Минимальная длина пароля 4 символа',
+          required: 'Required passoword',
+          maxLength: 'Max passowrd length 20 symbols',
+          minLength: 'Min passowrd length 4 symbols',
         }}
       />
       <Input
         id={'passwordR'}
         type={'password'}
-        placeholder={'повторите пароль *'}
+        placeholder={'repeat password *'}
         control={control}
         rules={{ validate: (value: string) => value === getValues('password') }}
         customErrors={{
-          required: 'Введите пароль',
-          validate: 'Пароль не совпадает',
+          required: 'Required password',
+          validate: 'Password does not match',
         }}
       />
-      <Button onClick={handleSubmit(onSubmit)}>Зарегистрироваться</Button>
+      <Button onClick={handleSubmit(onSubmit)}>Registration</Button>
     </form>
   );
 };

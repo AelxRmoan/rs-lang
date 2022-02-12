@@ -1,26 +1,23 @@
 import React, { InputHTMLAttributes, useState } from 'react';
 import { TextField } from '@mui/material';
 import css from './styles.css';
-import { Controller, Control } from 'react-hook-form';
+import { Controller, Control, Path } from 'react-hook-form';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps<T> extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
-  id: string;
+  id: Path<T>;
   placeholder?: string;
   error?: boolean;
   helperText?: string;
   value?: string;
-  control: Control;
+  control: Control<T>;
   rules?: {};
   customErrors?: {};
 }
 
-const defultErrors = {
-  required: 'required!',
-  max: 'Max length 12!',
-};
+const defultErrors = { required: 'required!' };
 
-export const Input: React.FC<InputProps> = ({
+export const Input = <T,>({
   id,
   type,
   placeholder,
@@ -31,7 +28,7 @@ export const Input: React.FC<InputProps> = ({
   control,
   rules,
   customErrors,
-}) => {
+}: InputProps<T>) => {
   return (
     <Controller
       render={({ field, fieldState }) => {
