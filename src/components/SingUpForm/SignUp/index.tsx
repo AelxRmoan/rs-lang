@@ -1,17 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from '../Input';
+import { Button } from '../Button';
+import { useForm } from 'react-hook-form';
+import { createUser } from '../../../api/users';
 
 export const SignUp = () => {
+  const { control, handleSubmit, getValues } = useForm({
+    mode: 'onBlur',
+    // defaultValues: { password: '', passwordR: '', name: '', login: '' },
+  });
+
+  const onSubmit = (data: any) => {
+    createUser(data);
+    alert(JSON.stringify(data));
+  };
+
   return (
-    <div>
-      <Input id={'name'} type={'text'} placeholder={'name *'} />
-      <Input id={'login'} type={'text'} placeholder={'login *'} />
-      <Input id={'password'} type={'password'} placeholder={'password *'} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        id={'name'}
+        type={'text'}
+        placeholder={'name *'}
+        control={control}
+        customErrors={{ required: 'Required name' }}
+      />
+      <Input
+        id={'email'}
+        type={'email'}
+        placeholder={'login *'}
+        control={control}
+        rules={{
+          pattern:
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        }}
+        customErrors={{
+          pattern: 'Incorrect email',
+          required: 'Required email',
+        }}
+      />
+      <Input
+        id={'password'}
+        type={'password'}
+        placeholder={'password *'}
+        control={control}
+        rules={{ maxLength: 20, minLength: 4 }}
+        customErrors={{
+          required: 'Required passoword',
+          maxLength: 'Max passowrd length 20 symbols',
+          minLength: 'Min passowrd length 4 symbols',
+        }}
+      />
       <Input
         id={'passwordR'}
         type={'password'}
         placeholder={'repeat password *'}
+        control={control}
+        rules={{ validate: (value: string) => value === getValues('password') }}
+        customErrors={{
+          required: 'Required password',
+          validate: 'Password does not match',
+        }}
       />
-    </div>
+      <Button onClick={handleSubmit(onSubmit)}>Registration</Button>
+    </form>
   );
 };
