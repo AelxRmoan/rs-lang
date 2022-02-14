@@ -7,7 +7,6 @@ import { createUser } from '../../../api/users';
 export const SignUp = () => {
   const { control, handleSubmit, getValues } = useForm({
     mode: 'onBlur',
-    // defaultValues: { password: '', passwordR: '', name: '', login: '' },
   });
 
   const onSubmit = (data: any) => {
@@ -45,7 +44,7 @@ export const SignUp = () => {
         control={control}
         rules={{ maxLength: 20, minLength: 4 }}
         customErrors={{
-          required: 'Required passoword',
+          required: 'Required password',
           maxLength: 'Max passowrd length 20 symbols',
           minLength: 'Min passowrd length 4 symbols',
         }}

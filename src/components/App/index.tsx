@@ -3,7 +3,7 @@ import { StyledEngineProvider } from '@mui/material';
 import React from 'react';
 import { Header } from '../Header';
 import { LandingPage } from '../LandingPage';
-import { SignUpForm } from '../SingUpForm';
+import { Savanna } from '../Savanna';
 
 export const App: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ export const App: React.FC = () => {
       <main className={css.main}>
         <LandingPage />
       </main>
-      <SignUpForm />
+      {/* <Savanna /> */}
     </StyledEngineProvider>
   );
 };
