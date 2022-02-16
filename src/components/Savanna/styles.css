@@ -1,0 +1,52 @@
+.word {
+  position: absolute;
+  width: 100px;
+  top: 100px;
+  margin-right: -50px;
+  left: 50%;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  from {
+    opacity: 0.5;
+    top: 100px;
+  }
+
+  to {
+    opacity: 1;
+    top: 50%;
+  }
+}
+
+@keyframes up {
+  /* from {
+    top: 50%;
+  } */
+  to {
+    top: 100px;
+  }
+}
+
+.up {
+  animation-duration: 1s !important;
+  animation-fill-mode: forwards !important;
+  animation-name: up !important;
+}
+
+.down {
+  animation-duration: 5s;
+  animation-name: fall;
+}
+
+.savanna {
+  width: 100%;
+  height: calc(100vh - 75px);
+  background-size: cover;
+}
+
+.buttonContainer {
+  /* margin: 0 auto; */
+  text-align: center;
+}

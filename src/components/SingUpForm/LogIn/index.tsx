@@ -6,18 +6,21 @@ import { signIn } from '../../../api/users';
 import { SignIn } from '../../../types';
 
 interface Props {
-  handleClose: () => void;
+  onSucsessLogin: () => void;
 }
 
-export const LogIn: React.FC<Props> = ({ handleClose }) => {
+export const LogIn: React.FC<Props> = ({ onSucsessLogin }) => {
   const { control, handleSubmit } = useForm<SignIn>({
     mode: 'onBlur',
     defaultValues: { email: '', password: '' },
   });
 
-  const onSubmit = async (data: any) => {
-    await signIn(data);
-    handleClose();
+  const onSubmit = async (loginData: any) => {
+    const data = await signIn(loginData);
+    if (data.token) {
+      onSucsessLogin();
+    }
+
     // alert(JSON.stringify(data));
   };
 

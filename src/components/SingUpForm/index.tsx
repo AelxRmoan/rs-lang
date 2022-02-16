@@ -12,9 +12,10 @@ enum TabsEnum {
 
 interface Props {
   handleClose: () => void;
+  onSucsessLogin: () => void;
 }
 
-export const SignUpForm: React.FC<Props> = ({ handleClose }) => {
+export const SignUpForm: React.FC<Props> = ({ onSucsessLogin }) => {
   const [currentTab, setCurrentTab] = useState(TabsEnum.LogIn);
 
   const handleTabs = (e: React.SyntheticEvent, val: TabsEnum) => {
@@ -29,7 +30,9 @@ export const SignUpForm: React.FC<Props> = ({ handleClose }) => {
           <Tab className={css.tab} label="Log In" />
         </Tabs>
         {currentTab === TabsEnum.SignUp && <SignUp />}
-        {currentTab === TabsEnum.LogIn && <LogIn handleClose={handleClose} />}
+        {currentTab === TabsEnum.LogIn && (
+          <LogIn onSucsessLogin={onSucsessLogin} />
+        )}
       </div>
     </div>
   );
