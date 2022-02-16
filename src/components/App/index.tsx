@@ -6,6 +6,7 @@ import { LandingPage } from '../LandingPage';
 import { Savanna } from '../Savanna';
 import Modal from '@mui/material/Modal';
 import { SignUpForm } from '../SingUpForm';
+import { Footer } from '../Footer';
 
 export const App: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -39,8 +40,8 @@ export const App: React.FC = () => {
       <Header onClick={onClick} isLoggedIn={isLoggedIn} />
       {/* <main className={css.main}>
         <LandingPage />
+   <Footer/>
       </main> */}
-      <Savanna />
       <Modal
         id="modal"
         className={css.modal}
@@ -51,7 +52,7 @@ export const App: React.FC = () => {
       >
         <SignUpForm handleClose={handleClose} onSucsessLogin={onSucsessLogin} />
       </Modal>
+
     </StyledEngineProvider>
-    // "62092712937fa9001658c769" userId
   );
 };
