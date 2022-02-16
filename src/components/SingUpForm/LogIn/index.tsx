@@ -5,15 +5,23 @@ import { Button } from '../Button';
 import { signIn } from '../../../api/users';
 import { SignIn } from '../../../types';
 
-export const LogIn = () => {
+interface Props {
+  onSucsessLogin: () => void;
+}
+
+export const LogIn: React.FC<Props> = ({ onSucsessLogin }) => {
   const { control, handleSubmit } = useForm<SignIn>({
     mode: 'onBlur',
     defaultValues: { email: '', password: '' },
   });
 
-  const onSubmit = (data: any) => {
-    signIn(data);
-    alert(JSON.stringify(data));
+  const onSubmit = async (loginData: any) => {
+    const data = await signIn(loginData);
+    if (data.token) {
+      onSucsessLogin();
+    }
+
+    // alert(JSON.stringify(data));
   };
 
   return (

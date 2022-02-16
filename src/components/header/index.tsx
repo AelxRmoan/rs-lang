@@ -1,16 +1,23 @@
-import css from './header.css'
+import css from './header.css';
 import { Button } from '../Button';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Tab, Tabs } from '@mui/material';
+import Box from '@mui/material/Box';
+import { flexbox } from '@mui/system';
 
 enum TabsEnum {
   Welcome,
   WordList,
   Statistics,
-  Games
+  Games,
 }
 
-export const Header = () => {
+interface Props {
+  onClick: () => void;
+  isLoggedIn: boolean;
+}
+
+export const Header: React.FC<Props> = ({ onClick, isLoggedIn }) => {
   const [currentTab, setCurrentTab] = useState(TabsEnum.Welcome);
 
   const handleTabs = (e: React.SyntheticEvent, val: TabsEnum) => {
@@ -27,7 +34,9 @@ export const Header = () => {
           <Tab className={css.tab} label="Games" />
         </Tabs>
       </div>
-      <Button selector={css.btn}>Log in</Button>
+      <Button selector={css.btn} onClick={onClick}>
+        {isLoggedIn ? 'Log out' : 'Log in'}
+      </Button>
     </header>
-  )
+  );
 };

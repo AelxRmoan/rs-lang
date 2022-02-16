@@ -10,9 +10,11 @@ export const createUser = async (user: User) => {
 };
 
 export const signIn = async (user: SignIn) => {
-  return baseFetch('/signin', {
+  const data = await baseFetch('/signin', {
     method: 'POST',
     body: JSON.stringify(user),
     headers: { 'Content-Type': 'application/json' },
   });
+  localStorage.setItem('token', data.token);
+  return data;
 };
