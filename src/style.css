@@ -138,6 +138,7 @@ table {
   --base-width: 1080;
   --h2-size: calc(50vh / (var(--base-width) / 100));
   --h3-size: calc(36vh / (var(--base-width) / 100));
+  --h4-size: calc(26vh / (var(--base-width) / 100));
   --p1-size: calc(20vh / (var(--base-width) / 100));
   --p2-size: calc(18vh / (var(--base-width) / 100));
   

@@ -4,3 +4,9 @@
     align-items: center;
     gap: calc(300vh / (var(--base-width) / 100));
 }
+
+.modal {
+  position: absolute;
+  left: 40%;
+  top: 30%;
+}

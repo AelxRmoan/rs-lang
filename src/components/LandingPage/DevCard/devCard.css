@@ -37,7 +37,8 @@
 .svg {
   padding: 0 calc(10vh / (var(--base-width) / 100));
   height: calc(28vh / (var(--base-width) / 100));
-  fill: var(--btn-inactive-color)
+  fill: var(--btn-inactive-color);
+  transition: fill 0.3s;
 }
 
 .svg:hover {

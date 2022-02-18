@@ -10,7 +10,12 @@ enum TabsEnum {
   LogIn,
 }
 
-export const SignUpForm = () => {
+interface Props {
+  handleClose: () => void;
+  onSucsessLogin: () => void;
+}
+
+export const SignUpForm: React.FC<Props> = ({ onSucsessLogin }) => {
   const [currentTab, setCurrentTab] = useState(TabsEnum.LogIn);
 
   const handleTabs = (e: React.SyntheticEvent, val: TabsEnum) => {
@@ -21,11 +26,13 @@ export const SignUpForm = () => {
     <div className={css.form}>
       <div className={css.formWrapper}>
         <Tabs className={css.menu} value={currentTab} onChange={handleTabs}>
-          <Tab className={css.tab} label="Регистрация" />
-          <Tab className={css.tab} label="Войти" />
+          <Tab className={css.tab} label="Sign Up" />
+          <Tab className={css.tab} label="Log In" />
         </Tabs>
         {currentTab === TabsEnum.SignUp && <SignUp />}
-        {currentTab === TabsEnum.LogIn && <LogIn />}
+        {currentTab === TabsEnum.LogIn && (
+          <LogIn onSucsessLogin={onSucsessLogin} />
+        )}
       </div>
     </div>
   );
