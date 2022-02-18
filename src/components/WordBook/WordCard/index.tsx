@@ -1,6 +1,11 @@
 import { Button } from '@mui/material';
 import css from './wordCard.css';
 
+async function addToComplex () {
+  const token = localStorage.getItem('token');
+  const resp = fetch('')
+}
+
 type wordCard = {
   id: string,
   image: string,
@@ -18,9 +23,10 @@ type wordCard = {
 interface WordCard {
   p: wordCard[],
   i: number,
+  authorized?: boolean,
 }
 
-export const WordCard = ({p, i}:WordCard): JSX.Element => {
+export const WordCard = ({p, i, authorized}:WordCard): JSX.Element => {
   const audioMean = new Audio(`https://aelx-rmoan-unexpert-rs-lang.herokuapp.com/${p[i].audioMeaning}`);
   const audioExam = new Audio(`https://aelx-rmoan-unexpert-rs-lang.herokuapp.com/${p[i].audioExample}`);
   return (
@@ -31,6 +37,11 @@ export const WordCard = ({p, i}:WordCard): JSX.Element => {
         <p className={css.p} dangerouslySetInnerHTML={{__html: `${p[i].textMeaning} - ${p[i].textMeaningTranslate}`}}/>
         <p className={css.p} dangerouslySetInnerHTML={{__html: `${p[i].textExample} - ${p[i].textExampleTranslate}`}}/>
         <Button className={css.btn} onClick={() => {audioMean.play(); setTimeout(()=>{audioExam.play()}, audioMean.duration * 1000)}}>Audio</Button>
+        {/* {authorized &&
+          <div className={css.btnFlex}>
+            <Button className={css.btn} onClick={() => {}}>Add to Complex</Button>
+          </div>
+        } */}
       </div>
     </li>
   )

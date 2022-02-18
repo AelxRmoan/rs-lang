@@ -3,8 +3,10 @@ import { StyledEngineProvider } from '@mui/material';
 import React from 'react';
 import { LandingPage } from '../LandingPage';
 import { WordBook } from '../WordBook';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout';
+import { SignUpForm } from '../SingUpForm';
+import { RequireAuth } from '../RequireAuth';
 
 
 export const App: React.FC = () => {
@@ -15,8 +17,12 @@ export const App: React.FC = () => {
             <Routes>
               <Route path='/' element={<Layout/>}>
                 <Route index element={<LandingPage/>}/>
-                <Route path="WordBook" element={<WordBook/>}/>
-                <Route path='*' element={<LandingPage/>}/>
+                <Route path="WordBook" element={
+                  <RequireAuth>
+                    <WordBook/>
+                  </RequireAuth>
+                }/>
+                <Route path='*' element={<Navigate to={'/'} replace/>}/>
               </Route>
             </Routes>
         </BrowserRouter>

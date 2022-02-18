@@ -2,6 +2,8 @@ import css from './layout.css'
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header";
+import Modal from '@mui/material/Modal';
+import { SignUpForm } from '../SingUpForm';
 
 
 export const Layout = () => {
@@ -36,10 +38,7 @@ export const Layout = () => {
       <main className={css.main}>
             <Outlet/>
       </main>
-      {/* <main className={css.main}>
-          <Outlet/>
-      </main> */}
-      {/* <Modal
+      <Modal
       id="modal"
       className={css.modal}
       open={open}
@@ -47,9 +46,8 @@ export const Layout = () => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       >
-      <SignUpForm handleClose={handleClose} onSucsessLogin={onSucsessLogin} />
-      </Modal> */}
+        <SignUpForm handleClose={handleClose} onSucsessLogin={onSucsessLogin} />
+      </Modal>
     </>
   )
-
 }

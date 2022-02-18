@@ -36,8 +36,8 @@ export const Header: React.FC<Props> = ({ onClick, isLoggedIn }) => {
           <Tabs className={css.menu} value={currentTab} onChange={handleTabs}>
             <Tab className={css.tab} label="Welcome"/>
             <Tab className={css.tab} label="Word Book"/>
-            <Tab className={css.tab} label="Statistics" />
-            <Tab className={css.tab} label="Games" />
+            <Tab className={css.tab} label="Statistics"/>
+            <Tab className={css.tab} label="Games"/>
           </Tabs>
         </div>
         <Button selector={css.btn} onClick={onClick}>
