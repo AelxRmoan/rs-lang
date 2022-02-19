@@ -1,6 +1,6 @@
 import css from './layout.css'
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Header } from "../Header";
 import Modal from '@mui/material/Modal';
 import { SignUpForm } from '../SingUpForm';
@@ -8,6 +8,8 @@ import { SignUpForm } from '../SingUpForm';
 
 export const Layout = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -17,6 +19,9 @@ export const Layout = () => {
     if (isLoggedIn) {
       localStorage.removeItem('token');
       setIsLoggedIn(false);
+
+      const fromPage = location.pathname || '/';
+      navigate(fromPage);
     } else {
       handleOpen();
     }
@@ -25,6 +30,9 @@ export const Layout = () => {
   const onSucsessLogin = () => {
     handleClose();
     setIsLoggedIn(true);
+    
+    const fromPage = location.pathname || '/';
+    navigate(fromPage);
   };
 
   useEffect(() => {

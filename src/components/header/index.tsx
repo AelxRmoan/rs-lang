@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Tab, Tabs } from '@mui/material';
 import Box from '@mui/material/Box';
 import { flexbox } from '@mui/system';
-import { Link, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Navigate, Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { LandingPage } from '../LandingPage';
 import { WordBook } from '../WordBook';
 
@@ -21,7 +21,10 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ onClick, isLoggedIn }) => {
-  const [currentTab, setCurrentTab] = useState(TabsEnum.Welcome);
+  let currTab;
+  const currLocation = useLocation().pathname.split(/[?, /]/)[1] as keyof typeof TabsEnum;
+  Object.values(TabsEnum).includes(currLocation) ? currTab = TabsEnum[currLocation] : currTab = 0;
+  const [currentTab, setCurrentTab] = useState(currTab);
   const navigate = useNavigate();
 
   const handleTabs = (e: React.SyntheticEvent, val: TabsEnum) => {
