@@ -9,6 +9,7 @@ const genRegAdvCards = (selector: string): Array<JSX.Element> => {
   for (let i = 0; i < regAdvList.length; i++) {
     advCards.push(
       <RegAdvCard
+        key={`regAdvcard${i}`}
         selector={selector}
         imgSrc={regAdvList[i].img}
         title={regAdvList[i].title}
@@ -25,6 +26,7 @@ const genDevCards = (selector: string): Array<JSX.Element> => {
   for (let i = 0; i < devList.length; i++) {
     devCards.push(
       <DevCard
+        key={`devcard${i}`}
         selector={selector}
         avaSrc={devList[i].ava}
         devName={devList[i].devName}

@@ -11,7 +11,6 @@ export const SignUp = () => {
 
   const onSubmit = (data: any) => {
     createUser(data);
-    alert(JSON.stringify(data));
   };
 
   return (

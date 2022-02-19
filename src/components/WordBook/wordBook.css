@@ -1,0 +1,30 @@
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.levels__ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.levels__li {
+    width: 25%;
+    height: 100px;
+    background-color: var(--bg-color);
+}
+
+.levels__underline {
+    width: 25%;
+    height: 1vh;
+    background: var(--btn-inactive-color);
+    transition: transform .5s;
+    border-radius: 10px;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
