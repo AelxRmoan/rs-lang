@@ -1,4 +1,3 @@
-import { Navigate, useLocation } from "react-router-dom"
 import React from 'react';
 
 interface RequireAuth {
@@ -6,7 +5,6 @@ interface RequireAuth {
 }
 
 export const RequireAuth = ({children}: RequireAuth) => {
-    const location = useLocation();
     const isAuth = localStorage.getItem('token');
 
     if (isAuth) {
