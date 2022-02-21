@@ -15,7 +15,7 @@ export const getWords = async (group: number): Promise<Word[]> => {
   return words;
 };
 
-export const putLearnedWords = async (learnedWords: number): Promise<void> => {
+export const putLearnedWords = async (learnedWords: Word[]): Promise<void> => {
   const userId = localStorage.getItem('userId');
   if (!userId) return;
   baseFetch(`/users/${userId}/statistics`, {
@@ -24,6 +24,11 @@ export const putLearnedWords = async (learnedWords: number): Promise<void> => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    body: JSON.stringify({ learnedWords }),
+    body: JSON.stringify({
+      learnedWords: learnedWords.length,
+      optional: {
+        learnedWords: learnedWords.map((item) => item.word).join(','),
+      },
+    }),
   });
 };

@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router';
 interface Props {
   known: Word[];
   unknown: Word[];
+  gameName: string;
 }
 
-export const Result: React.FC<Props> = ({ known, unknown }) => {
+export const Result: React.FC<Props> = ({ known, unknown, gameName }) => {
   const navigate = useNavigate();
-  console.log(known);
   return (
     <div>
       <h1 className={css.title}></h1>
@@ -32,7 +32,10 @@ export const Result: React.FC<Props> = ({ known, unknown }) => {
           </li>
         ))}
       </div>
-      <Button selector={css.button} onClick={() => navigate('/games/sprint')}>
+      <Button
+        selector={css.button}
+        onClick={() => navigate(`/games/${gameName}`)}
+      >
         Играть еще раз
       </Button>
     </div>
