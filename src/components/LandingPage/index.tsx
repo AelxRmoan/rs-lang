@@ -1,5 +1,5 @@
 import { DevCard } from './DevCard';
-import { devList } from './DevCard/devCards-list';
+import { devList } from './DevCard/DevCards-list';
 import css from './landingPage.css';
 import { RegAdvCard } from './RegAdvCard';
 import { regAdvList } from './RegAdvCard/regAdvCards-list';
@@ -34,6 +34,7 @@ const genDevCards = (selector: string): Array<JSX.Element> => {
         positionInfo={devList[i].positionInfo}
         itsContribution={devList[i].itsContribution}
         imgPos={imgPos[i % 2]}
+        link={devList[i].link}
       />
     );
   }

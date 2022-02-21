@@ -17,36 +17,43 @@ const getRandomNumber = (max: number) => {
 const correct = new Audio(correctAudio);
 const wrong = new Audio(wrongAudio);
 
-export const Audiocall = () => {
+interface Props {
+  selectedWords?: Word[];
+}
+
+export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
   const [wordIndex, setWordIndex] = useState(0);
-  const eventKeyboardListenerId = useRef<(event: KeyboardEvent) => void>(null);
-  const [words, setWords] = useState<Word[]>([]);
+  const eventKeyboardListenerId = useRef<
+    ((event: KeyboardEvent) => void) | null
+  >(null);
+  const [words, setWords] = useState<Word[]>(selectedWords || []);
   const [results, setResults] = useState<{ known: Word[]; unknown: Word[] }>({
     known: [],
     unknown: [],
   });
+  const [isFinish, setIsFinish] = useState(false);
 
   const [searchParams] = useSearchParams();
 
   const shuffleArray = (array: Word[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
+    return array
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
   };
 
-  const onEndGame = () => {
-    putLearnedWords(results.known.length);
-  };
+  useEffect(() => {
+    if (wordIndex > 4) {
+      putLearnedWords(results.known);
+      setIsFinish(true);
+    }
+  }, [wordIndex]);
 
   const answers = useMemo(() => {
     if (!words.length || !words[wordIndex]) return [];
-    const randomAnswers = shuffleArray(words).slice(1, 5);
+    const randomAnswers = shuffleArray(words).slice(0, 4);
 
-    return randomAnswers.concat(words[wordIndex]);
+    return shuffleArray(randomAnswers.concat(words[wordIndex]));
   }, [wordIndex, words]);
 
   const checkAnswer = (rightWord: string) => {
@@ -62,12 +69,13 @@ export const Audiocall = () => {
     setResults({ ...results });
   };
 
-  const onRightClick = () => {
-    checkAnswer('');
+  const onRightClick = (event: React.MouseEvent<HTMLElement>) => {
+    checkAnswer(event.currentTarget.textContent || '');
     setWordIndex(wordIndex + 1);
   };
 
   useEffect(() => {
+    if (words.length) return;
     getWords(+(searchParams?.get('level') || 0)).then((data) => {
       setWords(shuffleArray(data));
     });
@@ -77,51 +85,58 @@ export const Audiocall = () => {
     if (eventKeyboardListenerId.current !== null) {
       window.removeEventListener('keydown', eventKeyboardListenerId.current);
     }
-    if (!words[wordIndex]) return;
-    //@ts-ignore
-    eventKeyboardListenerId.current = (event) => {
-      if (event.code === 'ArrowLeft') {
-        onRightClick();
+    if (isFinish) return;
+
+    eventKeyboardListenerId.current = (event: KeyboardEvent) => {
+      if (event.code.startsWith('Digit')) {
+        const index = +event.code.replace('Digit', '');
+        checkAnswer(answers[index - 1].wordTranslate || '');
+        setWordIndex(wordIndex + 1);
       }
     };
     window.addEventListener('keydown', eventKeyboardListenerId.current);
     return () => {
-      //@ts-ignore
-      window.removeEventListener('keydown', eventKeyboardListenerId.current);
+      if (eventKeyboardListenerId.current !== null) {
+        window.removeEventListener('keydown', eventKeyboardListenerId.current);
+      }
     };
-  }, [onRightClick]);
+  }, [setWordIndex, answers, words, checkAnswer]);
 
   return (
     <div className={css.area}>
       <ul className={css.circles}>
-        {/* <li>Word</li>
-        <li>Word</li>
-        <li>Word</li>
-        <li>Word</li>
-        <li>Word</li>
-        <li>Word</li>
-        <li>Word</li>
-        <li>Word</li>
-        <li>Word</li>
-        <li>Word</li> */}
-        {words.map((word) => (
-          <li>{word.word}</li>
-        ))}
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
 
       {words.length &&
-        (words[wordIndex] ? (
-          <>
-            <Typography variant="h1">{words[wordIndex].word}</Typography>
-            {answers.map((item) => (
-              <div>{item.wordTranslate}</div>
-            ))}
-            <Button selector={''} onClick={onRightClick}>
-              Не знаю
-            </Button>
-          </>
+        (!isFinish ? (
+          <div className={css.answers}>
+            <div>
+              <Typography variant="h1">{words[wordIndex].word}</Typography>
+              {answers.map((item, key) => (
+                <Button selector="" onClick={onRightClick} key={key}>
+                  {key + 1} {item.wordTranslate}
+                </Button>
+              ))}
+            </div>
+            <div>
+              {' '}
+              <Button selector={''} onClick={onRightClick}>
+                Не знаю
+              </Button>
+            </div>
+          </div>
         ) : (
-          <Result {...results} />
+          <Result gameName={'audiocall'} {...results} />
         ))}
     </div>
   );
