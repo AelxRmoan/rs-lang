@@ -105,24 +105,36 @@ export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
   return (
     <div className={css.area}>
       <ul className={css.circles}>
-        {words.map((word) => (
-          <li>{word.word}</li>
-        ))}
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
 
       {words.length &&
         (!isFinish ? (
-          <>
-            <Typography variant="h1">{words[wordIndex].word}</Typography>
-            {answers.map((item, key) => (
-              <Button selector="" onClick={onRightClick} key={key}>
-                {item.wordTranslate}
+          <div className={css.answers}>
+            <div>
+              <Typography variant="h1">{words[wordIndex].word}</Typography>
+              {answers.map((item, key) => (
+                <Button selector="" onClick={onRightClick} key={key}>
+                  {key + 1} {item.wordTranslate}
+                </Button>
+              ))}
+            </div>
+            <div>
+              {' '}
+              <Button selector={''} onClick={onRightClick}>
+                Не знаю
               </Button>
-            ))}
-            <Button selector={''} onClick={onRightClick}>
-              Не знаю
-            </Button>
-          </>
+            </div>
+          </div>
         ) : (
           <Result gameName={'audiocall'} {...results} />
         ))}
