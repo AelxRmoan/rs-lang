@@ -89,7 +89,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -142,10 +142,10 @@ table {
   --h4-size: calc(26vh / (var(--base-width) / 100));
   --p1-size: calc(20vh / (var(--base-width) / 100));
   --p2-size: calc(18vh / (var(--base-width) / 100));
-  
-  --bg-color: #ffcccb;
+
+  --bg-color: #fb8f8f;
+  --second-color: #ffcccb;
   --btn-inactive-color: #ef9a9a;
   --text-dark: rgba(0, 0, 0, 0.6);
   --text-light: rgba(255, 255, 255, 1);
-
 }
