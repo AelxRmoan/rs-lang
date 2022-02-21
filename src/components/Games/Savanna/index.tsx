@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import css from './styles.css';
-import { Button } from '../Button';
-import img from './bg.jpg';
+import { Button } from '../../Button';
 
 const words = [
   'Test1',
@@ -22,9 +21,7 @@ export const Savanna = () => {
     wordRef.current.style.top = window
       .getComputedStyle(wordRef?.current)
       .getPropertyValue('top');
-    // console.log(
-    //   window.getComputedStyle(event.currentTarget).getPropertyValue('top')
-    // );
+
     wordRef.current.classList.add(css.up);
     setTimeout(() => {
       setCurrentWord(currentWord + 1);
@@ -33,13 +30,7 @@ export const Savanna = () => {
     }, 1000);
   };
   return (
-    <div
-      className={css.savanna}
-      style={{
-        background: `url(${img}) no-repeat center`,
-        backgroundSize: 'cover',
-      }}
-    >
+    <div className={css.savanna}>
       <div className={`${css.word} ${css.down}`} ref={wordRef}>
         {words[currentWord]}
       </div>

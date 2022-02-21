@@ -26,12 +26,13 @@ module.exports = {
     rules: [
       {
         test: /\.(jpg|png|gif|woff|eot|ttf|svg)/,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(mp3)/,
         use: {
-          loader: 'url-loader',
-          options: {
-            limit: 50000
-          }
-        }
+          loader: 'file-loader',
+        },
       },
 
       {
@@ -51,7 +52,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                localIdentName: '[path][name]__[local]',
+              },
             },
           },
         ],
