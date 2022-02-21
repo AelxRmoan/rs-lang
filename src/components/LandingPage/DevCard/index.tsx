@@ -23,7 +23,7 @@ export const DevCard = ({selector, avaSrc, devName, position, positionInfo, itsC
         </div>
         <span className={css.span}>{position}</span>
         <p className={css.p}>{positionInfo}</p>
-        <span className={css.span}>Ответсвенность</span>
+        <span className={css.span}>Responsible for</span>
         <p className={css.p}>{itsContribution}</p>
       </div>
       {imgPos === 'end' && <div className={css.img} style={{background: `url(${avaSrc}) no-repeat center`, backgroundSize: 'cover'}}/>}

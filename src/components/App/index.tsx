@@ -13,34 +13,35 @@ import { Intro as SprintIntro } from '../Games/Sprint/Intro';
 import { Intro as AudiocallIntro } from '../Games/Audiocall/Intro';
 import { Footer } from '../Footer';
 import { Games } from '../Games';
+import { Provider } from '../Provider';
 
 export const App: React.FC = () => {
   return (
     <React.StrictMode>
       <StyledEngineProvider injectFirst>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<LandingPage />} />
-              <Route
-                path="WordBook"
-                element={
-                  <RequireAuth>
-                    <WordBook />
-                  </RequireAuth>
-                }
-              />
-              <Route path="/games" element={<Games />} />
-
-              <Route path="/games/sprint/start" element={<Sprint />} />
-              <Route path="/games/sprint" element={<SprintIntro />} />
-
-              <Route path="/games/audiocall/start" element={<Audiocall />} />
-              <Route path="/games/audiocall" element={<AudiocallIntro />} />
-              <Route path="*" element={<Navigate to={'/'} replace />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <Provider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<LandingPage />} />
+                <Route
+                  path="WordBook"
+                  element={
+                    <RequireAuth>
+                      <WordBook />
+                    </RequireAuth>
+                  }
+                />
+                <Route path="/games" element={<Games />} />
+                <Route path="/games/sprint/start" element={<Sprint />} />
+                <Route path="/games/sprint" element={<SprintIntro />} />
+                <Route path="/games/audiocall/start" element={<Audiocall />} />
+                <Route path="/games/audiocall" element={<AudiocallIntro />} />
+                <Route path="*" element={<Navigate to={'/'} replace />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </Provider>
       </StyledEngineProvider>
     </React.StrictMode>
   );

@@ -4,9 +4,12 @@ a {
 }
 
 .footer {
+  position: relative;
+  bottom: 0;
   box-sizing: border-box;
   width: 100%;  
-  padding: calc(12vh / (var(--base-width) / 100)) calc(16vh / (var(--base-width) / 100));;
+  padding: calc(12vh / (var(--base-width) / 100)) calc(16vh / (var(--base-width) / 100));
+  margin-top: 3vh;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,14 +1,13 @@
-import css from './layout.css';
-import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Header } from '../Header';
+import css from './layout.css'
+import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import { Header } from "../Header";
 import Modal from '@mui/material/Modal';
 import { SignUpForm } from '../SingUpForm';
+import { Footer } from '../Footer';
 
 export const Layout = () => {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -18,9 +17,7 @@ export const Layout = () => {
     if (isLoggedIn) {
       localStorage.removeItem('token');
       setIsLoggedIn(false);
-
-      const fromPage = location.pathname || '/';
-      navigate(fromPage);
+      window.location.reload();
     } else {
       handleOpen();
     }
@@ -29,9 +26,7 @@ export const Layout = () => {
   const onSucsessLogin = () => {
     handleClose();
     setIsLoggedIn(true);
-
-    const fromPage = location.pathname || '/';
-    navigate(fromPage);
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -42,8 +37,9 @@ export const Layout = () => {
     <>
       <Header onClick={onClick} isLoggedIn={isLoggedIn} />
       <main className={css.main}>
-        <Outlet />
+        <Outlet/>
       </main>
+      <Footer/>
       <Modal
         id="modal"
         className={css.modal}
