@@ -1,7 +1,9 @@
 import css from './wordBook.css';
 import { Button, Pagination, Stack, Tab, Tabs } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { WordCard } from './WordCard';
+import { Link, useNavigate } from 'react-router-dom';
+import { Context } from '../Provider';
 
 async function goForPublic (url: string) {
   const resp = await fetch(`https://aelx-rmoan-unexpert-rs-lang.herokuapp.com/${url}`, {
@@ -23,7 +25,6 @@ async function goForPrivate (userId: string, token: string, page: number, diffic
   })
   return await resp.json()
 }
-
 function buildPublicPage (state: (p: JSX.Element[]) => void, group: number, page: number, authorized?: boolean): void {
   goForPublic(`words?group=${group}&page=${page}`)
   .then(wordsArr => {
@@ -58,11 +59,35 @@ function buildWordsPage(state: (p: JSX.Element[]) => void, group: number, page: 
   }
 }
 
+async function playSprint(group: number, page: number) {
+  let resultArr = [] as Object[];
+
+  if (group === 6) {
+
+  } else if (group === 7) {
+
+  } else {
+    const lll = await new Promise((resolve) => {
+      for (let i = page; i > 0; i--) {
+        goForPublic(`words?group=${group}&page=${i}`)
+        .then(wordArr => {
+        resultArr = [...resultArr, ...wordArr]
+       })
+      }
+      resolve('')
+    }).then(lll => {setTimeout(()=>{console.log(lll)}), 4000})
+    return lll
+  }
+  
+}
+
 interface WordBook {
   authorized?: boolean
 }
 
 export const WordBook = ({authorized}: WordBook) => {
+  const {currWords, setCurrWords} = useContext(Context);
+  const navigate = useNavigate()
   const [group, setGroup] = useState(0);
   const handleTabs = (e: React.SyntheticEvent, value: number) => setGroup(value);
   
@@ -72,6 +97,7 @@ export const WordBook = ({authorized}: WordBook) => {
   const [wordPage, setWordPage] = useState([] as JSX.Element[]);
   useEffect(() => {buildWordsPage(setWordPage, group, page - 1, authorized)}, [])
   useEffect(() => {buildWordsPage(setWordPage, group, page - 1, authorized)}, [page, group])
+  console.log
   return (
     <>
     <section className={css.header}>
@@ -93,7 +119,7 @@ export const WordBook = ({authorized}: WordBook) => {
       <h2 className={css.h2}>Level {group + 1}</h2>
       <h3 className={css.h3}>Page {page}</h3>
       <div className={css.gameBtnFlex}>
-        <Button className={css.gameBtn}>Sprint</Button>
+        <Button className={css.gameBtn} onClick={() => {console.log(playSprint(group, page))}}>Sprint</Button>
         <Button className={css.gameBtn}>Audio Call</Button>
       </div>
       <ul className={css.ul}>
