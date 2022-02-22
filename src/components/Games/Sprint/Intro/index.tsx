@@ -3,10 +3,10 @@ import { GameIntro } from '../../GameIntro';
 
 export const Intro = () => {
   return (
-    <GameIntro title="Спринт" gameName="sprint">
-      «Спринт» - это тренировка для повторения заученных слов из вашего словаря.
+    <GameIntro title="Sprint" gameName="sprint">
+      "Sprint" is a practice for repeating memorized words from your vocabulary.
       <br />
-      Используйте мышь, чтобы выбрать. Используйте клавиши влево или вправо
+      Use the mouse to select. Use the left or right keys
     </GameIntro>
   );
 };

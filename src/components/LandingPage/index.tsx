@@ -1,5 +1,5 @@
 import { DevCard } from './DevCard';
-import { devList } from './DevCard/devCards-list';
+import { devList } from './DevCard/DevCards-list';
 import css from './landingPage.css';
 import { RegAdvCard } from './RegAdvCard';
 import { regAdvList } from './RegAdvCard/regAdvCards-list';
@@ -45,7 +45,7 @@ export const LandingPage = () => {
     <>
       <h1 className={css.h1}>Rs-lang AelxRmoan Unexpert</h1>
       <section className={css.section}>
-        <h2 className={css.h2}>Как работает наше приложение</h2>
+        <h2 className={css.h2}>How It Works</h2>
         <iframe
           className={css.iframe}
           src="https://www.youtube.com/embed/4ogh8aFa7kY"
@@ -56,13 +56,13 @@ export const LandingPage = () => {
         ></iframe>
       </section>
       <section className={css.section}>
-        <h2 className={css.h2}>Присоединяйтесь к нам</h2>
+        <h2 className={css.h2}>Join Us</h2>
         <ul className={css.regAdvCards__Ul}>
           {genRegAdvCards(css.regAdvCard)}
         </ul>
       </section>
       <section className={css.section}>
-        <h2 className={css.h2}>Разрабатывали</h2>
+        <h2 className={css.h2}>Developers</h2>
         <ul className={css.devCards__Ul}>{genDevCards(css.devCard)}</ul>
       </section>
     </>

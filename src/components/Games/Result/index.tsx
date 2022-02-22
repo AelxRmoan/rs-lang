@@ -17,7 +17,7 @@ export const Result: React.FC<Props> = ({ known, unknown }) => {
       <h1 className={css.title}></h1>
 
       <div className={css.worldList}>
-        <h2 className={css.knownTitle}>Знаю: {known.length}</h2>
+        <h2 className={css.knownTitle}>Know: {known.length}</h2>
         {known.map((item) => (
           <li className={css.words}>
             {item.word} - {item.wordTranslate}
@@ -25,7 +25,7 @@ export const Result: React.FC<Props> = ({ known, unknown }) => {
         ))}
       </div>
       <div className={css.worldList}>
-        <h2 className={css.unknownTitle}>Не знаю: {unknown.length}</h2>
+        <h2 className={css.unknownTitle}>Don't know: {unknown.length}</h2>
         {unknown.map((item) => (
           <li className={css.words}>
             {item.word} - {item.wordTranslate}
@@ -33,7 +33,7 @@ export const Result: React.FC<Props> = ({ known, unknown }) => {
         ))}
       </div>
       <Button selector={css.button} onClick={() => navigate('/games/sprint')}>
-        Играть еще раз
+        Play Again
       </Button>
     </div>
   );

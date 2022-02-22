@@ -117,7 +117,7 @@ export const Audiocall = () => {
               <div>{item.wordTranslate}</div>
             ))}
             <Button selector={''} onClick={onRightClick}>
-              Не знаю
+              Don't know
             </Button>
           </>
         ) : (

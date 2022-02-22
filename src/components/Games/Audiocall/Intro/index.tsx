@@ -3,12 +3,12 @@ import { GameIntro } from '../../GameIntro';
 
 export const Intro = () => {
   return (
-    <GameIntro title="Аудиовызов" gameName="audiocall">
-      «Аудиовызов» - это тренировка, которая улучшает восприятие речи на слух.
-      Используйте мышь, чтобы выбрать. Используйте цифровые клавиши от 1 до 5
-      для выбора ответа Используйте пробел для повтроного звучания слова
-      Используйте клавишу Enter для подсказки или для перехода к следующему
-      слову
+    <GameIntro title="Audio Call" gameName="audiocall">
+      "Audio Call" is a training that improves listening comprehension.
+      Use the mouse to select. Use number keys from 1 to 5
+      to select an answer Use space to repeat the word
+      Use the Enter key for a hint or to move to the next
+      word
     </GameIntro>
   );
 };

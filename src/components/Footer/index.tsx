@@ -19,7 +19,7 @@ export const Footer = () => {
           </a>
         </div>
         <div className={css.menu}>
-          <h3 className={css.h3}>Меню</h3>
+          <h3 className={css.h3}>Menu</h3>
           <ul className={css.ul}>
             <li className={css.li}><Link to='/'>Welcome</Link></li>
             <li className={css.li}><Link to='/WordBook'>WordBook</Link></li>
@@ -28,10 +28,10 @@ export const Footer = () => {
           </ul>
         </div>
         <div className={css.menu}>
-          <h3 className={css.h3}>Разработчики</h3>
+          <h3 className={css.h3}>Developers</h3>
           <ul className={css.ul}>
-            <li className={css.li}><a href="" className={css.a}>1 разработчик</a></li>
-            <li className={css.li}><a href="" className={css.a}>2 разработчик</a></li>
+            <li className={css.li}><a href="https://github.com/AelxRmoan" className={css.a}>AelxRmoan</a></li>
+            <li className={css.li}><a href="https://github.com/RUnexpert" className={css.a}>Runexpert</a></li>
           </ul>
         </div>
       </div>

@@ -147,18 +147,18 @@ export const Sprint = ({bookWords}: lll) => {
           (words[wordIndex] && time > 0 ? (
             <>
               <div className={css.score}>
-                <Typography variant="h3">Очки:{score}</Typography>
+                <Typography variant="h3">Score:{score}</Typography>
               </div>
-              <Typography variant="h2">Время:{time}</Typography>
+              <Typography variant="h2">Time:{time}</Typography>
 
               <Typography variant="h1">{words[wordIndex].word}</Typography>
               <Typography variant="h2">{answer}</Typography>
               <div className={css.buttonContainer}>
                 <Button selector={css.btn} onClick={onRightClick}>
-                  Верно
+                  Right
                 </Button>
                 <Button selector={css.btn} onClick={onWrongClick}>
-                  Неверно
+                  Wrong
                 </Button>
               </div>
             </>
