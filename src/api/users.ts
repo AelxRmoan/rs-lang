@@ -16,6 +16,7 @@ export const signIn = async (user: SignIn) => {
     headers: { 'Content-Type': 'application/json' },
   });
   localStorage.setItem('token', data.token);
+  localStorage.setItem('name', data.name);
   localStorage.setItem('userId', data.userId);
   return data;
 };

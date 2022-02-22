@@ -20,10 +20,17 @@ interface lll {
   bookWords: Promise<object[]>
 }
 
-export const Sprint = ({bookWords}: lll) => {
+interface Props {
+  selectedWords?: Word[];
+  bookWords?: Promise<object[]>
+}
+
+export const Sprint: React.FC<Props> = ({ selectedWords, bookWords }) => {
   const [wordIndex, setWordIndex] = useState(0);
-  const eventKeyboardListenerId = useRef<(event: KeyboardEvent) => void>(null);
-  const [words, setWords] = useState<Word[]>([]);
+  const eventKeyboardListenerId = useRef<
+    ((event: KeyboardEvent) => void) | null
+  >(null);
+  const [words, setWords] = useState<Word[]>(selectedWords || []);
   const [score, setScore] = useState(0);
   const [combo, setCombo] = useState(0);
   const [time, setTime] = useState(60);
@@ -36,17 +43,14 @@ export const Sprint = ({bookWords}: lll) => {
   const [searchParams] = useSearchParams();
 
   const shuffleArray = (array: Word[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
+    return array
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
   };
 
   const onEndGame = () => {
-    putLearnedWords(results.known.length);
+    putLearnedWords(results.known);
   };
 
   useEffect(() => {
@@ -100,6 +104,7 @@ export const Sprint = ({bookWords}: lll) => {
   };
 
   useEffect(() => {
+    if (words.length) return;
     getWords(+(searchParams?.get('level') || 0)).then((data) => {
       setWords(shuffleArray(data).slice(0, 20));
       setStartTimer(true);
@@ -111,8 +116,8 @@ export const Sprint = ({bookWords}: lll) => {
       window.removeEventListener('keydown', eventKeyboardListenerId.current);
     }
     if (!words[wordIndex]) return;
-    //@ts-ignore
-    eventKeyboardListenerId.current = (event) => {
+
+    eventKeyboardListenerId.current = (event: KeyboardEvent) => {
       if (event.code === 'ArrowLeft') {
         onRightClick();
       }
@@ -122,8 +127,9 @@ export const Sprint = ({bookWords}: lll) => {
     };
     window.addEventListener('keydown', eventKeyboardListenerId.current);
     return () => {
-      //@ts-ignore
-      window.removeEventListener('keydown', eventKeyboardListenerId.current);
+      if (eventKeyboardListenerId.current !== null) {
+        window.removeEventListener('keydown', eventKeyboardListenerId.current);
+      }
     };
   }, [onRightClick, onWrongClick]);
 
@@ -163,7 +169,7 @@ export const Sprint = ({bookWords}: lll) => {
               </div>
             </>
           ) : (
-            <Result {...results} />
+            <Result gameName={'sprint'} {...results} />
           ))}
       </div>
     </div>

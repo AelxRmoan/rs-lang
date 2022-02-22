@@ -34,6 +34,7 @@ const genDevCards = (selector: string): Array<JSX.Element> => {
         positionInfo={devList[i].positionInfo}
         itsContribution={devList[i].itsContribution}
         imgPos={imgPos[i % 2]}
+        link={devList[i].link}
       />
     );
   }

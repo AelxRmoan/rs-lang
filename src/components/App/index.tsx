@@ -37,7 +37,7 @@ export const App: React.FC = () => {
                 <Route path="/games" element={<Games />} />
                 <Route path="/games/sprint/start" element={<Sprint bookWords={currWords} />} />
                 <Route path="/games/sprint" element={<SprintIntro />} />
-                <Route path="/games/audiocall/start" element={<Audiocall />} />
+                <Route path="/games/audiocall/start" element={<Audiocall bookWords={currWords}/>} />
                 <Route path="/games/audiocall" element={<AudiocallIntro />} />
                 <Route path="*" element={<Navigate to={'/'} replace />} />
               </Route>

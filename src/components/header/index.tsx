@@ -12,7 +12,7 @@ enum TabsEnum {
   Welcome,
   WordBook,
   Statistics,
-  Games,
+  games,
 }
 
 interface Props {
@@ -21,9 +21,8 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ onClick, isLoggedIn }) => {
-  let currTab;
   const currLocation = useLocation().pathname.split(/[?, /]/)[1] as keyof typeof TabsEnum;
-  Object.values(TabsEnum).includes(currLocation) ? currTab = TabsEnum[currLocation] : currTab = 0;
+  let currTab = Object.values(TabsEnum).includes(currLocation) ? TabsEnum[currLocation] : 0;
   const [currentTab, setCurrentTab] = useState(currTab);
   const navigate = useNavigate();
 
