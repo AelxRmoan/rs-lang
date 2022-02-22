@@ -62,7 +62,6 @@ function buildWordsPage(state: (p: JSX.Element[]) => void, group: number, page: 
 async function playGame(group: number, page: number) {
   let resultArr: Object[] = [];
   if (group === 6) {
-  } else if (group === 7) {
     for (let i = page; i > 0; i--) {
       const resp = await goForPrivate(page, 0)
       .then(wordArr => resultArr = [...resultArr, ...wordArr[0].paginatedResults])
