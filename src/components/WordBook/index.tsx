@@ -15,7 +15,9 @@ async function goForPublic (url: string) {
   return await resp.json()
 }
 
-async function goForPrivate (userId: string, token: string, page: number, difficulty: number) {
+async function goForPrivate (page: number, difficulty: number) {
+  const token = localStorage.getItem('token') as string;
+  const userId = localStorage.getItem('userId') as string;
   const resp = await fetch(`https://aelx-rmoan-unexpert-rs-lang.herokuapp.com/users/${userId}/aggregatedWords?page=${page}&wordsPerPage=20&filter=%7B%22%24and%22%3A%5B%7B%22userWord.difficulty%22%3A%22${['hard', 'easy'][difficulty]}%22%7D%5D%7D`, {
     method: 'GET',
     headers: {
@@ -36,9 +38,7 @@ function buildPublicPage (state: (p: JSX.Element[]) => void, group: number, page
   })
 }
 function buildPrivatePage (state: (p: JSX.Element[]) => void, page: number, difficulty: number, authorized?: boolean): void {
-  const token = localStorage.getItem('token') as string;
-  const userId = localStorage.getItem('userId') as string;
-  goForPrivate(userId, token, page, difficulty)
+  goForPrivate(page, difficulty)
   .then(wordsArr => {
     const cleanedWordsArr = wordsArr[0].paginatedResults;
     const jsxArr = [];
@@ -59,26 +59,27 @@ function buildWordsPage(state: (p: JSX.Element[]) => void, group: number, page: 
   }
 }
 
-async function playSprint(group: number, page: number) {
-  let resultArr = [] as Object[];
-
+async function playGame(group: number, page: number) {
+  let resultArr: Object[] = [];
   if (group === 6) {
-
   } else if (group === 7) {
-
+    for (let i = page; i > 0; i--) {
+      const resp = await goForPrivate(page, 0)
+      .then(wordArr => resultArr = [...resultArr, ...wordArr[0].paginatedResults])
+    }
+  } else if (group === 7) {
+    for (let i = page; i > 0; i--) {
+      const resp = await goForPrivate(page, 1)
+      .then(wordArr => resultArr = [...resultArr, ...wordArr[0].paginatedResults])
+    }
   } else {
-    const lll = await new Promise((resolve) => {
-      for (let i = page; i > 0; i--) {
-        goForPublic(`words?group=${group}&page=${i}`)
-        .then(wordArr => {
-        resultArr = [...resultArr, ...wordArr]
-       })
-      }
-      resolve('')
-    }).then(lll => {setTimeout(()=>{console.log(lll)}), 4000})
-    return lll
+    for (let i = page; i > 0; i--) {
+      const resp = await goForPublic(`words?group=${group}&page=${i}`)
+      .then(wordArr => resultArr = [...resultArr, ...wordArr])
+    }
   }
-  
+  localStorage.setItem('currWords', JSON.stringify(resultArr))
+  return resultArr
 }
 
 interface WordBook {
@@ -86,8 +87,8 @@ interface WordBook {
 }
 
 export const WordBook = ({authorized}: WordBook) => {
-  const {currWords, setCurrWords} = useContext(Context);
-  const navigate = useNavigate()
+  const {setCurrWords} = useContext(Context);
+  const navigate = useNavigate();
   const [group, setGroup] = useState(0);
   const handleTabs = (e: React.SyntheticEvent, value: number) => setGroup(value);
   
@@ -97,7 +98,6 @@ export const WordBook = ({authorized}: WordBook) => {
   const [wordPage, setWordPage] = useState([] as JSX.Element[]);
   useEffect(() => {buildWordsPage(setWordPage, group, page - 1, authorized)}, [])
   useEffect(() => {buildWordsPage(setWordPage, group, page - 1, authorized)}, [page, group])
-  console.log
   return (
     <>
     <section className={css.header}>
@@ -119,8 +119,12 @@ export const WordBook = ({authorized}: WordBook) => {
       <h2 className={css.h2}>Level {group + 1}</h2>
       <h3 className={css.h3}>Page {page}</h3>
       <div className={css.gameBtnFlex}>
-        <Button className={css.gameBtn} onClick={() => {console.log(playSprint(group, page))}}>Sprint</Button>
-        <Button className={css.gameBtn}>Audio Call</Button>
+        <Button className={css.gameBtn} onClick={() => {setCurrWords(playGame(group, page)); setTimeout(() => {
+          navigate('/games/sprint')
+        }, 3000);}}>Sprint</Button>
+        <Button className={css.gameBtn} onClick={() => {setCurrWords(playGame(group, page)); setTimeout(() => {
+          navigate('/games/audiocall')
+        }, 3000);}}>Audio Call</Button>
       </div>
       <ul className={css.ul}>
         {wordPage}

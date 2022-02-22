@@ -16,8 +16,11 @@ const getRandomNumber = (max: number) => {
 
 const correct = new Audio(correctAudio);
 const wrong = new Audio(wrongAudio);
+interface lll {
+  bookWords: Promise<object[]>
+}
 
-export const Sprint = () => {
+export const Sprint = ({bookWords}: lll) => {
   const [wordIndex, setWordIndex] = useState(0);
   const eventKeyboardListenerId = useRef<(event: KeyboardEvent) => void>(null);
   const [words, setWords] = useState<Word[]>([]);
@@ -138,7 +141,7 @@ export const Sprint = () => {
         <li></li>
         <li></li>
       </ul>
-
+      {console.log(bookWords)}
       <div className={css.container}>
         {words.length &&
           (words[wordIndex] && time > 0 ? (
