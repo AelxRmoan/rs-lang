@@ -43,12 +43,15 @@ export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
   };
 
   useEffect(() => {
-    if (wordIndex > 4) {
+    if (wordIndex > 20) {
       putLearnedWords(results.known);
       setIsFinish(true);
     }
   }, [wordIndex]);
-
+  const song = new Audio(
+    `https://aelx-rmoan-unexpert-rs-lang.herokuapp.com/${words[wordIndex]?.audio}`
+  );
+  song?.play();
   const answers = useMemo(() => {
     if (!words.length || !words[wordIndex]) return [];
     const randomAnswers = shuffleArray(words).slice(0, 4);
@@ -59,7 +62,9 @@ export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
   const checkAnswer = (rightWord: string) => {
     wrong.pause();
     correct.pause();
-    if (words[wordIndex].wordTranslate === rightWord) {
+    song.src = `https://aelx-rmoan-unexpert-rs-lang.herokuapp.com/${words[wordIndex].audio}`;
+
+    if (words[wordIndex].wordTranslate === rightWord.slice(2)) {
       results.known.push(words[wordIndex]);
       correct.play();
     } else {
@@ -102,6 +107,10 @@ export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
     };
   }, [setWordIndex, answers, words, checkAnswer]);
 
+  const play = () => {
+    song.play();
+  };
+
   return (
     <div className={css.area}>
       <ul className={css.circles}>
@@ -121,15 +130,18 @@ export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
         (!isFinish ? (
           <div className={css.answers}>
             <div>
-              <Typography variant="h1">{words[wordIndex].word}</Typography>
+              <div>
+                <Button selector="" onClick={play}>
+                  Проиграть звук
+                </Button>
+              </div>
               {answers.map((item, key) => (
-                <Button selector="" onClick={onRightClick} key={key}>
+                <Button selector={css.button} onClick={onRightClick} key={key}>
                   {key + 1} {item.wordTranslate}
                 </Button>
               ))}
             </div>
             <div>
-              {' '}
               <Button selector={''} onClick={onRightClick}>
                 Не знаю
               </Button>
