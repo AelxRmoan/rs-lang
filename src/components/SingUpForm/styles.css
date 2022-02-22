@@ -1,0 +1,25 @@
+.form {
+  max-width: 300px;
+  background: var(--bg-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.formWrapper {
+  max-width: 250px;
+  text-align: center;
+}
+
+.buttonWrapper {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.tab {
+  width: 50%;
+}

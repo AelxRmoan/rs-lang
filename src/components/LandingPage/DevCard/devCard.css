@@ -1,0 +1,59 @@
+.card__Container {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  padding: calc(30vh / (var(--base-width) / 100));
+  border-radius: 2vh;
+  box-shadow: 1px 3px 4px rgb(0 0 0 / 10%);
+}
+
+/* .card__Container:hover {
+  box-shadow: inset 0px 2px 1px -1px rgb(0 0 0 / 20%), inset 0px 1px 1px 0px rgb(0 0 0 / 14%), inset 0px 1px 3px 0px #0000001f !important;
+  background: rgba(0, 0, 0, 0.04);
+} */
+
+.img {
+  min-width: calc(200vh / (var(--base-width) / 100));
+  height: calc(200vh / (var(--base-width) / 100));
+  border-radius: 50%;
+}
+
+.rightFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.nameFlex {
+  display: flex;
+  align-items: baseline;
+}
+
+.h3 {
+  font-size: var(--h3-size);
+  color: var(--text-dark);
+}
+
+.svg {
+  padding: 0 calc(10vh / (var(--base-width) / 100));
+  height: calc(28vh / (var(--base-width) / 100));
+  fill: var(--btn-inactive-color);
+  transition: fill 0.3s;
+}
+
+.svg:hover {
+  fill: var(--bg-color);
+}
+
+.span {
+  width: max-content;
+  background: var(--bg-color);
+  font-size: var(--p2-size);
+  color: var(--text-light);
+  border-radius: 10px;
+  padding: 0 1vh;
+}
+
+.p {
+  font-size: var(--p1-size);
+}
