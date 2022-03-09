@@ -1,12 +1,12 @@
-import img1 from './devCardsImg/goose.jpg';
+import img1 from './devCardsImg/AelxRmoan.jpg';
 import img2 from './devCardsImg/johnsena.jpg';
 
 export const devList = [
   {
     ava: img1,
     devName: 'AelxRmoan',
-    position: 'Novice Developer',
-    positionInfo: `I do what I am said. Otherwise I say what to do`,
+    position: 'Frontend Developer',
+    positionInfo: `I've been studying web development for about six months now. This time I want to thank the team for this valuable and positive experience.`,
     itsContribution: `Welcome page, Word Book page, Routing`,
     link: `https://github.com/AelxRmoan`,
   },
@@ -14,21 +14,8 @@ export const devList = [
     ava: img2,
     devName: 'Runexpert',
     position: 'Frontend Developer',
-    positionInfo: `Всегда интересно делать что-то если делаешь это в команде. Благодаря RS-School я смог получить интересный опыт разработки приложений.`,
-    itsContribution: `Авторизация, игры: Спринт, Аудиовызов`,
+    positionInfo: `It is always exciting doing something if you do it in a team. Thanks to RS-School, I've been able to get an interesting experience in application development.`,
+    itsContribution: `Authorization, games: Sprint, Audio call`,
     link: `https://github.com/RUnexpert`,
-  },
-  {
-    ava: img1,
-    devName: '1adv',
-    position: 'Presidente',
-    positionInfo: `dasdadsasdas da sd a sd as d as d asd a sd ad a d ad a sd asd as da dsa ds asd
-        as d asd a sd a sd as d asd a sd as da sd a sd a sda sd a sd asd a
-        sd a d as da sd a sd asd a sd a sd asd a sd a sd asd a sd as
-        da d as da d as d asd a sd a sd ad a sd as d asd a sd as d as da d as d asd a sd as da sd asd a sd`,
-    itsContribution: `dsasdas da sd a sd as d as d asd a sd ad a d ad a sd asd as da dsa ds asd
-        as d asd a sd a sd as d asd a sd as da sd a sd a sda sd a sd asd a
-        sd a d as da sd a sd asd a sd a sd asd a sd a sd asd a sd as
-        da d as da d as d asd a sd a sd ad a sd as d asd a sd as d as da d as d asd a sd as da sd asd a `,
   },
 ];

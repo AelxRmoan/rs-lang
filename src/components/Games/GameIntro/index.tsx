@@ -53,7 +53,7 @@ export const GameIntro: React.FC<Props> = ({
           </Select>
         </FormControl>
         <Button selector={css.button} onClick={startGame}>
-          Начать
+          Don't know
         </Button>
       </div>
     </div>

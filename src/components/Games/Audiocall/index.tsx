@@ -19,9 +19,10 @@ const wrong = new Audio(wrongAudio);
 
 interface Props {
   selectedWords?: Word[];
+  bookWords?: Promise<object[]>
 }
 
-export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
+export const Audiocall: React.FC<Props> = ({ selectedWords, bookWords }) => {
   const [wordIndex, setWordIndex] = useState(0);
   const eventKeyboardListenerId = useRef<
     ((event: KeyboardEvent) => void) | null
@@ -132,7 +133,7 @@ export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
             <div>
               <div>
                 <Button selector="" onClick={play}>
-                  Проиграть звук
+                  Repeat Audio
                 </Button>
               </div>
               {answers.map((item, key) => (
@@ -143,7 +144,7 @@ export const Audiocall: React.FC<Props> = ({ selectedWords }) => {
             </div>
             <div>
               <Button selector={''} onClick={onRightClick}>
-                Не знаю
+                Don't know
               </Button>
             </div>
           </div>

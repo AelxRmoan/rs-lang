@@ -16,12 +16,16 @@ const getRandomNumber = (max: number) => {
 
 const correct = new Audio(correctAudio);
 const wrong = new Audio(wrongAudio);
+interface lll {
+  bookWords: Promise<object[]>
+}
 
 interface Props {
   selectedWords?: Word[];
+  bookWords?: Promise<object[]>
 }
 
-export const Sprint: React.FC<Props> = ({ selectedWords }) => {
+export const Sprint: React.FC<Props> = ({ selectedWords, bookWords }) => {
   const [wordIndex, setWordIndex] = useState(0);
   const eventKeyboardListenerId = useRef<
     ((event: KeyboardEvent) => void) | null
@@ -143,24 +147,24 @@ export const Sprint: React.FC<Props> = ({ selectedWords }) => {
         <li></li>
         <li></li>
       </ul>
-
+      {console.log(bookWords)}
       <div className={css.container}>
         {words.length &&
           (words[wordIndex] && time > 0 ? (
             <>
               <div className={css.score}>
-                <Typography variant="h3">Очки:{score}</Typography>
+                <Typography variant="h3">Score:{score}</Typography>
               </div>
-              <Typography variant="h2">Время:{time}</Typography>
+              <Typography variant="h2">Time:{time}</Typography>
 
               <Typography variant="h1">{words[wordIndex].word}</Typography>
               <Typography variant="h2">{answer}</Typography>
               <div className={css.buttonContainer}>
                 <Button selector={css.btn} onClick={onRightClick}>
-                  Верно
+                  Right
                 </Button>
                 <Button selector={css.btn} onClick={onWrongClick}>
-                  Неверно
+                  Wrong
                 </Button>
               </div>
             </>
